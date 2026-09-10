@@ -1,0 +1,1063 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: #d8d0c5;
+    font-family: "Poppins", sans-serif;
+    color: #443a32;
+    overflow: hidden;
+}
+
+
+/* =========================
+   PHONE
+========================= */
+
+.phone {
+    width: 100%;
+    max-width: 430px;
+    height: 100vh;
+    margin: auto;
+    background: #f7f2eb;
+    position: relative;
+    overflow: hidden;
+
+    box-shadow: 0 0 30px rgba(0,0,0,0.15);
+}
+
+
+/* =========================
+   SLIDER
+========================= */
+
+.slider {
+    width: 600%;
+    height: 100%;
+    will-change: transform;
+
+    display: flex;
+
+    transition:
+        transform 0.6s cubic-bezier(.77,0,.18,1);
+}
+
+.slide {
+    width: 16.6667%;
+    height: 100%;
+
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    text-align: center;
+
+    padding: 45px 28px 115px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scroll-behavior: smooth;
+}
+
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.subtitle {
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+    opacity: 0.7;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 72px;
+    line-height: 0.85;
+}
+
+h1 span {
+    display: block;
+    font-size: 35px;
+    margin: 13px 0;
+}
+
+h2 {
+    font-size: 52px;
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.home {
+    background:
+        linear-gradient(
+            rgba(247,242,235,0.78),
+            rgba(247,242,235,0.90)
+        ),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed")
+        center / cover;
+}
+
+.home-content {
+    width: 100%;
+}
+
+.full-name {
+    margin-top: 25px;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.date > span {
+    font-family: "Cormorant Garamond";
+    font-size: 55px;
+}
+
+.date div {
+    border-left: 1px solid #8d8175;
+    padding-left: 12px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.date small {
+    letter-spacing: 3px;
+}
+
+.date b {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.open-btn,
+.rsvp-btn {
+    border: none;
+    background: #443a32;
+    color: white;
+
+    padding: 14px 22px;
+
+    border-radius: 30px;
+
+    font-family: "Poppins";
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.open-btn:hover,
+.rsvp-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.open-btn i,
+.rsvp-btn i {
+    margin-right: 7px;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    width: 100%;
+}
+
+.names {
+    font-family: "Cormorant Garamond";
+    font-size: 29px;
+    margin: 25px 0;
+}
+
+.names span {
+    display: block;
+    font-size: 22px;
+    margin: 5px;
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo {
+    width: 145px;
+    height: 180px;
+
+    margin: 15px auto;
+
+    border: 1px solid #b8aa9c;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eee7df;
+
+    color: #a69a8d;
+
+    font-size: 30px;
+}
+
+
+/* =========================
+   EVENT
+========================= */
+
+.event-card {
+    background: rgba(255,255,255,0.55);
+
+    border: 1px solid #ddd3c8;
+
+    padding: 18px;
+
+    margin: 15px 0;
+
+    border-radius: 15px;
+}
+
+.event-card i {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.location {
+    margin-top: 20px;
+}
+
+.location i {
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.gallery-item {
+    height: 150px;
+
+    background: #e8e0d7;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #a69a8d;
+
+    font-size: 28px;
+}
+
+.gallery-note {
+    margin-top: 18px;
+    font-size: 11px;
+}
+
+
+/* =========================
+   RSVP
+========================= */
+
+.rsvp-btn {
+    margin: 25px 0;
+}
+
+.closing {
+    margin-top: 20px;
+}
+
+.closing-name {
+    font-family: "Cormorant Garamond";
+    font-size: 35px;
+    margin-top: 25px;
+}
+
+
+/* =========================
+   BOTTOM NAVIGATION
+========================= */
+
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: rgba(250, 247, 242, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(210, 198, 185, 0.7);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-item {
+  width: 20%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #aaa097;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition:
+    color 0.5s ease,
+    transform 0.5s ease;
+}
+
+.nav-item i {
+  font-size: 16px;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.nav-item span {
+  font-size: 8px;
+  letter-spacing: 0.3px;
+}
+
+.nav-item.active {
+  color: #443a32;
+}
+
+.nav-item.active i {
+  transform: translateY(-2px) scale(1.08);
+}
+
+.nav-item:active {
+  transform: scale(0.92);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 430px) {
+
+    .phone {
+        max-width: none;
+        box-shadow: none;
+    }
+
+    h1 {
+        font-size: 65px;
+    }
+
+    h2 {
+        font-size: 47px;
+    }
+}
+
+
+/* =========================
+   LAPTOP
+========================= */
+
+@media (min-width: 700px) {
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .phone {
+        height: 90vh;
+        max-height: 850px;
+        border-radius: 25px;
+    }
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: 15px 0 25px;
+}
+
+.countdown div {
+  width: 55px;
+  padding: 7px 3px;
+  border: 1px solid #d0c2b4;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.countdown span {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+}
+
+.countdown small {
+  font-size: 7px;
+  letter-spacing: 1px;
+  opacity: 0.65;
+}
+
+.photo {
+    overflow: hidden;
+    position: relative;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================
+   AGAR ISI TIDAK TERTUTUP
+========================= */
+
+.slide .content,
+.slide .home-content {
+    width: 100%;
+    max-width: 100%;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Scrollbar dibuat lebih halus */
+.slide::-webkit-scrollbar {
+    width: 3px;
+}
+
+.slide::-webkit-scrollbar-thumb {
+    background: #c5b8aa;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   JARAK AMAN BOTTOM NAV
+========================= */
+
+.bottom-nav {
+    height: 75px;
+}
+
+
+/* =========================
+   KHUSUS HP KECIL
+========================= */
+
+@media (max-height: 700px) {
+
+    .slide {
+        padding-top: 25px;
+        padding-bottom: 105px;
+    }
+
+    h1 {
+        font-size: 55px;
+    }
+
+    h2 {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .photo {
+        width: 120px;
+        height: 145px;
+    }
+
+    .event-card {
+        padding: 12px;
+        margin: 10px 0;
+    }
+
+    .event-card h3 {
+        font-size: 23px;
+    }
+}
+
+/* =========================
+   GALERI FOTO
+========================= */
+
+.gallery-item {
+    height: 145px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #e8e0d7;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* ANIMASI PEMBUKA */
+.opening .content {
+  animation: fadeUp 1.2s ease;
+}
+
+.opening h2,
+.opening p,
+.opening .names {
+  animation: fadeUp 1s ease both;
+}
+
+.opening h2 {
+  animation-delay: 0.2s;
+}
+
+.opening p {
+  animation-delay: 0.4s;
+}
+
+.opening .names {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   KONSEP KARTU UNDANGAN
+========================= */
+
+.slide {
+  padding: 25px 20px 105px;
+  align-items: center;
+  background: #e4ddd4;
+}
+
+.slide .content,
+.slide .home-content {
+  width: 100%;
+  max-width: 380px;
+  min-height: 78%;
+  padding: 45px 25px;
+  background: rgba(250, 247, 242, 0.96);
+  border: 1px solid rgba(180, 165, 150, 0.45);
+  border-radius: 18px;
+  box-shadow:
+    0 15px 35px rgba(70, 55, 45, 0.12),
+    0 3px 8px rgba(70, 55, 45, 0.06);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  animation: cardAppear 0.9s ease both;
+}
+
+/* HOME */
+.home {
+  background:
+    linear-gradient(
+      rgba(218, 208, 196, 0.78),
+      rgba(218, 208, 196, 0.90)
+    );
+}
+
+/* Animasi kartu */
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.slider {
+  width: 600%;
+  height: 100%;
+  display: flex;
+  will-change: transform;
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================
+   MEMPELAI - ELEGANT
+========================= */
+
+.couple .content {
+  gap: 4px;
+}
+
+.couple .subtitle {
+  margin-bottom: 8px;
+}
+
+.couple h2 {
+  margin-bottom: 15px;
+}
+
+.couple .photo {
+  width: 135px;
+  height: 165px;
+  border-radius: 50% 50% 45% 45%;
+  border: 2px solid #c9b9a8;
+  padding: 5px;
+  background: #f7f2eb;
+  box-shadow: 0 8px 20px rgba(70, 55, 45, 0.10);
+  margin: 8px auto;
+}
+
+.couple .photo img {
+  border-radius: 50% 50% 45% 45%;
+}
+
+.couple h3 {
+  font-size: 27px;
+  margin: 5px 0 2px;
+}
+
+.couple h3 + p {
+  font-size: 10px;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+.ampersand {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 38px;
+  font-style: italic;
+  margin: 4px 0;
+  color: #8c7b6b;
+  animation: softAmpersand 2s ease-in-out infinite alternate;
+}
+
+@keyframes softAmpersand {
+  from {
+    opacity: 0.65;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   ACARA - ELEGANT CARDS
+========================= */
+
+.event .content {
+  justify-content: center;
+}
+
+.event h2 {
+  margin-bottom: 18px;
+}
+
+.event-card {
+  width: 100%;
+  padding: 20px 15px;
+  margin: 8px 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid #ddd2c5;
+  box-shadow: 0 6px 18px rgba(70, 55, 45, 0.06);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(70, 55, 45, 0.10);
+}
+
+.event-card i {
+  font-size: 21px;
+  margin-bottom: 6px;
+  color: #806f60;
+}
+
+.event-card h3 {
+  font-size: 25px;
+  margin: 3px 0 6px;
+}
+
+.event-card p {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.location {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd2c5;
+  width: 100%;
+}
+
+.location i {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #806f60;
+}
+
+.location p {
+  font-size: 11px;
+}
+
+/* =========================
+   GALERI - ELEGANT COLLAGE
+========================= */
+
+.gallery .content {
+  justify-content: center;
+}
+
+.gallery h2 {
+  margin-bottom: 20px;
+}
+
+.gallery-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-rows: 145px 145px;
+  gap: 10px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 15px;
+  background: #e8e0d7;
+  box-shadow: 0 6px 18px rgba(70, 55, 45, 0.08);
+}
+
+.gallery-item:nth-child(1) {
+  grid-row: span 2;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-note {
+  margin-top: 20px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  opacity: 0.75;
+}
+
+/* =========================
+   RSVP - ELEGANT
+========================= */
+
+.rsvp .content {
+  justify-content: center;
+}
+
+.rsvp h2 {
+  font-size: 42px;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+.rsvp .content > p:first-of-type {
+  max-width: 280px;
+  margin: 0 auto;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.rsvp-btn {
+  margin: 28px 0 20px;
+  padding: 14px 25px;
+  border-radius: 30px;
+  background: #443a32;
+  box-shadow: 0 8px 18px rgba(68, 58, 50, 0.15);
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.rsvp-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(68, 58, 50, 0.20);
+}
+
+.rsvp-btn i {
+  margin-right: 8px;
+}
+
+.closing {
+  max-width: 270px;
+  margin: 20px auto 0;
+  font-size: 10px;
+  line-height: 1.8;
+  opacity: 0.7;
+}
+
+.closing-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 38px;
+  margin-top: 25px;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   HOME / COVER UNDANGAN
+========================= */
+
+.home {
+  background:
+    linear-gradient(
+      rgba(221, 211, 200, 0.78),
+      rgba(221, 211, 200, 0.90)
+    ),
+    url("images/catur.jpg") center / cover;
+}
+
+.home .home-content {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ornamen tipis di dalam kartu */
+.home .home-content::before,
+.home .home-content::after {
+  content: "";
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border: 1px solid #c9b9a8;
+  opacity: 0.5;
+}
+
+.home .home-content::before {
+  top: 18px;
+  left: 18px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.home .home-content::after {
+  bottom: 18px;
+  right: 18px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Judul cover */
+.home h1 {
+  font-size: 64px;
+  line-height: 0.82;
+  letter-spacing: 1px;
+}
+
+.home h1 span {
+  font-size: 30px;
+  margin: 12px 0;
+  font-style: italic;
+}
+
+.home .full-name {
+  margin-top: 22px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  opacity: 0.75;
+}
+
+/* Tanggal */
+.home .date {
+  margin: 25px 0 18px;
+}
+
+/* Countdown */
+.home .countdown {
+  margin: 15px 0 25px;
+}
+
+/* Tombol */
+.home .open-btn {
+  opacity: 0;
+  animation:
+    smoothText 1.1s cubic-bezier(0.22, 1, 0.36, 1)
+    1.2s forwards;
+}
+
+/* Animasi khusus judul */
+.home .subtitle {
+  animation-delay: 0.15s;
+}
+
+.home h1 {
+  animation-delay: 0.35s;
+}
+
+.home .full-name {
+  animation-delay: 0.55s;
+}
+
+.home .date {
+  animation-delay: 0.75s;
+}
+
+.home .countdown {
+  animation-delay: 0.95s;
+}
+
+/* =========================
+   ORNAMEN KARTU
+========================= */
+
+.slide .content,
+.slide .home-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide .content::before,
+.slide .home-content::before {
+  content: "✦";
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  color: #b5a494;
+  opacity: 0.55;
+}
+
+.slide .content::after,
+.slide .home-content::after {
+  content: "✦";
+  position: absolute;
+  bottom: 18px;
+  left: 22px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  color: #b5a494;
+  opacity: 0.55;
+}
+
+/* FIX TOMBOL AGAR TETAP TERLIHAT */
+.open-btn,
+.rsvp-btn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Tombol buka undangan tetap muncul setelah animasi */
+.home .open-btn {
+  opacity: 1 !important;
+  animation: buttonSoftAppear 1s ease 1s both !important;
+}
+
+@keyframes buttonSoftAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
