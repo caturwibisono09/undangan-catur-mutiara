@@ -1,219 +1,294 @@
-let currentSlide = 0;
-
 const slider = document.getElementById("slider");
 const navItems = document.querySelectorAll(".nav-item");
 
-const totalSlides = 6;
+const totalSlides = 7;
+
+let currentSlide = 0;
+
+const navSlideIndexes = [0, 2, 3, 4, 5, 6];
 
 
-/* =========================
-   PINDAH SLIDE
-========================= */
+// =========================
+// PINDAH SLIDE
+// =========================
 
 function goToSlide(index) {
-  if (index < 0) index = 0;
-  if (index >= totalSlides) index = totalSlides - 1;
 
-  currentSlide = index;
+    index = Math.max(
+        0,
+        Math.min(index, totalSlides - 1)
+    );
 
-  slider.style.transform =
-    `translate3d(-${currentSlide * 16.6667}%, 0, 0)`;
+    currentSlide = index;
 
-  updateNavigation();
+    slider.style.transform =
+        `translate3d(-${currentSlide * (100 / totalSlides)}%, 0, 0)`;
+
+    updateNavigation();
 }
 
 
-/* =========================
-   NAVIGASI
-========================= */
+// =========================
+// UPDATE NAVIGASI
+// =========================
 
 function updateNavigation() {
 
-    navItems.forEach((item, index) => {
+    navItems.forEach((item, i) => {
 
-        item.classList.remove("active");
-
-        if (index === currentSlide) {
-
-            item.classList.add("active");
-
-        }
+        item.classList.toggle(
+            "active",
+            navSlideIndexes[i] === currentSlide
+        );
 
     });
 
 }
 
 
-/* =========================
-   SWIPE HP
-========================= */
+// =========================
+// BUKA UNDANGAN
+// =========================
 
-let startX = 0;
-let endX = 0;
+function bukaUndangan() {
 
-slider.addEventListener("touchstart", function(event) {
+    goToSlide(1);
 
-    startX = event.touches[0].clientX;
-
-});
+}
 
 
-slider.addEventListener("touchend", function(event) {
+// =========================
+// NAMA TAMU DARI URL
+// =========================
 
-    endX = event.changedTouches[0].clientX;
+// Contoh:
+// index.html?to=Andi%20Saputra
 
-    handleSwipe();
+function setGuestName() {
 
-});
+    const params =
+        new URLSearchParams(window.location.search);
 
+    const guest =
+        params.get("to");
 
-function handleSwipe() {
+    if (guest && guest.trim()) {
 
-    const distance = endX - startX;
-
-    if (Math.abs(distance) < 50) {
-        return;
-    }
-
-    if (distance < 0) {
-
-        // Swipe kiri
-        goToSlide(currentSlide + 1);
-
-    } else {
-
-        // Swipe kanan
-        goToSlide(currentSlide - 1);
+        document.getElementById("guestName").textContent =
+            decodeURIComponent(
+                guest.replace(/\+/g, " ")
+            ).trim();
 
     }
 
 }
 
-
-/* =========================
-   MOUSE / TRACKPAD
-========================= */
-
-let mouseStart = 0;
-
-slider.addEventListener("mousedown", function(event) {
-
-    mouseStart = event.clientX;
-
-});
-
-slider.addEventListener("mouseup", function(event) {
-
-    const mouseEnd = event.clientX;
-
-    const distance = mouseEnd - mouseStart;
-
-    if (Math.abs(distance) < 50) {
-        return;
-    }
-
-    if (distance < 0) {
-        goToSlide(currentSlide + 1);
-    } else {
-        goToSlide(currentSlide - 1);
-    }
-
-});
+setGuestName();
 
 
-/* =========================
-   MULAI DARI HOME
-========================= */
+// =========================
+// COUNTDOWN
+// =========================
 
-goToSlide(0);
+const weddingDate =
+    new Date(
+        "2026-12-12T08:00:00+07:00"
+    ).getTime();
 
-/* =========================
-   COUNTDOWN
-========================= */
-
-const weddingDate = new Date("December 12, 2026 08:00:00").getTime();
 
 function updateCountdown() {
 
-    const now = new Date().getTime();
+    const distance =
+        weddingDate - Date.now();
 
-    const distance = weddingDate - now;
 
     if (distance <= 0) {
 
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
+        [
+            "days",
+            "hours",
+            "minutes",
+            "seconds"
+        ].forEach(id => {
+
+            document.getElementById(id).textContent =
+                "00";
+
+        });
 
         return;
     }
 
-    const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-    );
 
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
+    const days =
+        Math.floor(
+            distance / 86400000
+        );
 
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
 
-    const seconds = Math.floor(
-        (distance % (1000 * 60)) /
-        1000
-    );
+    const hours =
+        Math.floor(
+            (distance % 86400000) /
+            3600000
+        );
 
-    document.getElementById("days").innerText =
+
+    const minutes =
+        Math.floor(
+            (distance % 3600000) /
+            60000
+        );
+
+
+    const seconds =
+        Math.floor(
+            (distance % 60000) /
+            1000
+        );
+
+
+    document.getElementById("days").textContent =
         String(days).padStart(2, "0");
 
-    document.getElementById("hours").innerText =
+
+    document.getElementById("hours").textContent =
         String(hours).padStart(2, "0");
 
-    document.getElementById("minutes").innerText =
+
+    document.getElementById("minutes").textContent =
         String(minutes).padStart(2, "0");
 
-    document.getElementById("seconds").innerText =
+
+    document.getElementById("seconds").textContent =
         String(seconds).padStart(2, "0");
+
 }
+
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
-/* =========================
-   RSVP WHATSAPP
-========================= */
+
+// =========================
+// RSVP WHATSAPP
+// =========================
 
 function kirimRSVP() {
 
-    const nomorWhatsApp = "6285609363301";
+    const nomorWhatsApp =
+        "6285609363301";
+
+
+    const namaTamu =
+        document
+            .getElementById("guestName")
+            .textContent
+            .trim();
+
 
     const pesan =
-        "Assalamualaikum, saya ingin mengkonfirmasi kehadiran pada acara pernikahan Catur Wibisono & Mutiara Dewi.";
+        `Assalamualaikum, saya ${namaTamu} ingin mengkonfirmasi kehadiran pada acara pernikahan Catur Wibisono & Mutiara Dewi.`;
+
 
     const url =
-        "https://wa.me/" +
-        nomorWhatsApp +
-        "?text=" +
-        encodeURIComponent(pesan);
+        `https://wa.me/${nomorWhatsApp}?text=${encodeURIComponent(pesan)}`;
 
-    window.open(url, "_blank");
+
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
 }
 
-function bukaUndangan() {
-  const music = document.getElementById("weddingMusic");
 
-  music.play().catch(function(error) {
-    console.log("Musik belum dapat diputar:", error);
-  });
+// =========================
+// SWIPE
+// =========================
 
-  goToSlide(1);
-}
+let startX = null;
+let startY = null;
 
-slider.style.transform =
-  `translate3d(-${currentSlide * 16.6667}%, 0, 0)`;
+
+slider.addEventListener(
+    "pointerdown",
+    event => {
+
+        startX = event.clientX;
+        startY = event.clientY;
+
+    }
+);
+
+
+slider.addEventListener(
+    "pointerup",
+    event => {
+
+        if (
+            startX === null ||
+            startY === null
+        ) {
+            return;
+        }
+
+
+        const dx =
+            event.clientX - startX;
+
+
+        const dy =
+            event.clientY - startY;
+
+
+        startX = null;
+        startY = null;
+
+
+        // Gerakan horizontal harus lebih dominan
+
+        if (
+            Math.abs(dx) < 50 ||
+            Math.abs(dx) <= Math.abs(dy)
+        ) {
+            return;
+        }
+
+
+        if (dx < 0) {
+
+            goToSlide(
+                currentSlide + 1
+            );
+
+        } else {
+
+            goToSlide(
+                currentSlide - 1
+            );
+
+        }
+
+    }
+);
+
+
+slider.addEventListener(
+    "pointercancel",
+    () => {
+
+        startX = null;
+        startY = null;
+
+    }
+);
+
+
+// Mulai dari Home
+
+goToSlide(0);
